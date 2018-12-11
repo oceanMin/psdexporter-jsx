@@ -48,60 +48,60 @@ var DialogManager = function () {
     this.init = function () {
         var totalY = 0;
         // ウィンドウ作成
-        _window = new Window("dialog", "HTML初期構築自動化 ver2.1", _getPosition({x:200, y:200, w:390, h:850}));
+        _window = new Window("dialog", "HTML初始构建自动化_ v2.1", _getPosition({x:200, y:200, w:390, h:850}));
         // 画像ファイル設定
         totalY = 20;
-        _imageCheckboxExport = _window.add("checkbox", _getPosition({x:20, y:totalY, w:320, h:40}), "画像ファイルを書き出す");
+        _imageCheckboxExport = _window.add("checkbox", _getPosition({x:20, y:totalY, w:320, h:40}), "导出图像文件");
         _imageCheckboxExport.value = true;
-        imagePanel = _window.add("panel", _getPosition({x:20, y:totalY + 40, w:350, h:130}), "画像ファイル設定");
-        imagePanel.add("statictext", _getPosition({x:20, y:20, w:100, h:20}), "ディレクトリ :").justify = "right";
+        imagePanel = _window.add("panel", _getPosition({x:20, y:totalY + 40, w:350, h:130}), "图像文件设置");
+        imagePanel.add("statictext", _getPosition({x:20, y:20, w:100, h:20}), "目录 :").justify = "right";
         _imageEdittextDirectory = imagePanel.add("edittext", _getPosition({x:130, y:20, w:200, h:20}), "images");
-        imagePanel.add("statictext", _getPosition({x:20, y:50, w:100, h:20}), "ファイル形式 :").justify = "right";
+        imagePanel.add("statictext", _getPosition({x:20, y:50, w:100, h:20}), "文件格式 :").justify = "right";
         _imageRadiobuttonPng = imagePanel.add("radiobutton", _getPosition({x:130, y:50, w:50, h:20}), "PNG");
         _imageRadiobuttonPng.value = true;
         _imageRadiobuttonJpg = imagePanel.add("radiobutton", _getPosition({x:190, y:50, w:50, h:20}), "JPEG");
         _imageRadiobuttonJpg.value = false;
         _imageRadiobuttonGif = imagePanel.add("radiobutton", _getPosition({x:250, y:50, w:50, h:20}), "GIF");
         _imageRadiobuttonGif.value = false;
-        imagePanel.add("statictext", _getPosition({x:20, y:80, w:100, h:20}), "JPEG画質 :").justify = "right";
-        _imageDropdownlistJpgCompress = imagePanel.add("dropdownlist", _getPosition({x:130, y:80, w:200, h:20}), ["100 （最高画質）", "90", "80 （高画質）", "70", "60 （やや高画質）", "50", "40", "30 （中画質）", "20", "10 （低画質）"]);
+        imagePanel.add("statictext", _getPosition({x:20, y:80, w:100, h:20}), "JPEG画质 :").justify = "right";
+        _imageDropdownlistJpgCompress = imagePanel.add("dropdownlist", _getPosition({x:130, y:80, w:200, h:20}), ["100 （最高画质）", "90", "80 （高画质）", "70", "60 （中高画质）", "50", "40", "30 （中画质）", "20", "10 （低画质）"]);
         _imageDropdownlistJpgCompress.selection = 2;
         // HTMLファイル設定
         totalY = 200;
-        _htmlCheckboxExport = _window.add("checkbox", _getPosition({x:20, y:totalY, w:350, h:40}), "HTMLファイルを書き出す");
+        _htmlCheckboxExport = _window.add("checkbox", _getPosition({x:20, y:totalY, w:350, h:40}), "导出HTML文件");
         _htmlCheckboxExport.value = true;
-        htmlPanel = _window.add("panel", _getPosition({x:20, y:totalY + 40, w:350, h:160}), "HTMLファイル設定");
-        htmlPanel.add("statictext", _getPosition({x:20, y:20, w:100, h:20}), "ディレクトリ :").justify = "right";
+        htmlPanel = _window.add("panel", _getPosition({x:20, y:totalY + 40, w:350, h:160}), "HTML文件设置");
+        htmlPanel.add("statictext", _getPosition({x:20, y:20, w:100, h:20}), "目录:").justify = "right";
         _htmlEdittextDirectory = htmlPanel.add("edittext", _getPosition({x:130, y:20, w:200, h:20}), "");
-        htmlPanel.add("statictext", _getPosition({x:20, y:50, w:100, h:20}), "ファイル名 :").justify = "right";
+        htmlPanel.add("statictext", _getPosition({x:20, y:50, w:100, h:20}), "文件名 :").justify = "right";
         _htmlEdittextName = htmlPanel.add("edittext", _getPosition({x:130, y:50, w:200, h:20}), "index.html");
-        htmlPanel.add("statictext", _getPosition({x:20, y:80, w:100, h:20}), "ドキュメント形式 :").justify = "right";
+        htmlPanel.add("statictext", _getPosition({x:20, y:80, w:100, h:20}), "文件类型:").justify = "right";
         _htmlDropdownlistDoctype = htmlPanel.add("dropdownlist", _getPosition({x:130, y:80, w:200, h:20}), ["HTML5", "Jade", "XHTML 1.0 Transitional", "HTML 4.01 Transitional"]);
         _htmlDropdownlistDoctype.selection = 0;
-        htmlPanel.add("statictext", _getPosition({x:20, y:110, w:100, h:20}), "ページタイトル :").justify = "right";
-        _htmlEdittextTitle = htmlPanel.add("edittext", _getPosition({x:130, y:110, w:200, h:20}), "無題ドキュメント");
+        htmlPanel.add("statictext", _getPosition({x:20, y:110, w:100, h:20}), "页面标题 :").justify = "right";
+        _htmlEdittextTitle = htmlPanel.add("edittext", _getPosition({x:130, y:110, w:200, h:20}), "无标题文件");
         // CSSファイル設定
         totalY = 410;
-        _cssCheckboxExport = _window.add("checkbox", _getPosition({x:20, y:totalY, w:350, h:40}), "CSSファイルを書き出す");
+        _cssCheckboxExport = _window.add("checkbox", _getPosition({x:20, y:totalY, w:350, h:40}), "导出CSS文件");
         _cssCheckboxExport.value = true;
-        _cssPanel = _window.add("panel", _getPosition({x:20, y:totalY + 40, w:350, h:130}), "CSSファイル設定");
-        _cssPanel.add("statictext", _getPosition({x:20, y:20, w:100, h:20}), "ディレクトリ :").justify = "right";
+        _cssPanel = _window.add("panel", _getPosition({x:20, y:totalY + 40, w:350, h:130}), "CSS文件设置");
+        _cssPanel.add("statictext", _getPosition({x:20, y:20, w:100, h:20}), "目录:").justify = "right";
         _cssEdittextDirectory = _cssPanel.add("edittext", _getPosition({x:130, y:20, w:200, h:20}), "css");
-        _cssPanel.add("statictext", _getPosition({x:20, y:50, w:100, h:20}), "ファイル名 :").justify = "right";
+        _cssPanel.add("statictext", _getPosition({x:20, y:50, w:100, h:20}), "文件名 :").justify = "right";
         _cssEdittextName = _cssPanel.add("edittext", _getPosition({x:130, y:50, w:200, h:20}), "index.css");
-        _cssPanel.add("statictext", _getPosition({x:20, y:80, w:100, h:20}), "レイアウト :").justify = "right";
-        _cssCheckboxLayout = _cssPanel.add("checkbox", _getPosition({x:130, y:80, w:200, h:20}), "absoluteで配置情報を書き込む");
+        _cssPanel.add("statictext", _getPosition({x:20, y:80, w:100, h:20}), "布局 :").justify = "right";
+        _cssCheckboxLayout = _cssPanel.add("checkbox", _getPosition({x:130, y:80, w:200, h:20}), "绝对写入放置信息");
         _cssCheckboxLayout.value = true;
         // その他オプション
         totalY = 600;
         _window.add("statictext", _getPosition({x:20, y:totalY, w:90, h:20}), "背景色 :").justify = "right";
         _otherEdittextColor = _window.add("edittext", _getPosition({x:120, y:totalY, w:200, h:20}), "#ffffff");
-        _window.add("statictext", _getPosition({x:20, y:totalY + 30, w:90, h:20}), "パス記述方式 :").justify = "right";
-        _otherRadiobuttonRelative = _window.add("radiobutton", _getPosition({x:120, y:totalY + 30, w:80, h:20}), "相対パス");
+        _window.add("statictext", _getPosition({x:20, y:totalY + 30, w:90, h:20}), "路径描述方法 :").justify = "right";
+        _otherRadiobuttonRelative = _window.add("radiobutton", _getPosition({x:120, y:totalY + 30, w:80, h:20}), "相对路径");
         _otherRadiobuttonRelative.value = true;
-        _otherRadiobuttonAbsolute = _window.add("radiobutton", _getPosition({x:200, y:totalY + 30, w:80, h:20}), "絶対パス");
+        _otherRadiobuttonAbsolute = _window.add("radiobutton", _getPosition({x:200, y:totalY + 30, w:80, h:20}), "绝对路径");
         _otherRadiobuttonAbsolute.value = false;
-        _window.add("statictext", _getPosition({x:20, y:totalY + 60, w:90, h:20}), "文字コード :").justify = "right";
+        _window.add("statictext", _getPosition({x:20, y:totalY + 60, w:90, h:20}), "字符编码 :").justify = "right";
         _otherDropdownlistCharaset = _window.add("dropdownlist", _getPosition({x:120, y:totalY + 60, w:200, h:20}), ["UTF-8", "Shift_JIS"]);
         _otherDropdownlistCharaset.selection = 0;
         // OKボタン
@@ -338,7 +338,7 @@ var DialogManager = function () {
             checkErrorEvent();
         } else {
             _window.close();
-            alert("取り消しました");
+            alert("取消");
         }
     }
 
@@ -458,11 +458,11 @@ var ErrorChecker = function () {
         });
         var msg = "";
         if (_errorMsgSave != "" || _errorMsgDuplicate != "" || _errorMsgName != "" || _errorMsgExist != "") {
-            msg = "以下のエラーがあります。\n\n";
+            msg = "以下错误。\n\n";
             if (_errorMsgSave != "") msg += _errorMsgSave;
-            if (_errorMsgDuplicate != "") msg += "■レイヤー及びレイヤーセットの名称でIDに重複しているものがあります。\n\n" + _errorMsgDuplicate;
-            if (_errorMsgName != "") msg += "■レイヤー及びレイヤーセットの名称でIDに使用出来ない文字列が存在します。\n\n" + _errorMsgName;
-            if (_errorMsgExist != "") msg += "■表示範囲に要素がないレイヤー及びレイヤーセットが存在します。\n\n" + _errorMsgExist;
+            if (_errorMsgDuplicate != "") msg += "■图层和图层组的名称中存在一些重复的ID。\n\n" + _errorMsgDuplicate;
+            if (_errorMsgName != "") msg += "■在图层和图层集的名称中，有一个字符串不能用于ID。\n\n" + _errorMsgName;
+            if (_errorMsgExist != "") msg += "■显示范围内没有元素和图层集。\n\n" + _errorMsgExist;
         }
         if (msg != "") {
             alert(msg);
@@ -475,12 +475,12 @@ var ErrorChecker = function () {
     // 保存チェック
     function _checkSave() {
         if (!activeDocument || !activeDocument.path) {
-            _errorMsgSave += "■実行するには、PSDドキュメントを保存する必要があります。\n\n";
+            _errorMsgSave += "■为了执行它，您需要保存PSD文档。\n\n";
         }
         var fileName = String(activeDocument.fullName);
         fileName = fileName.substring(fileName.lastIndexOf("/") + 1, fileName.length);
         if (fileName.match(/[^0-9A-Za-z_.:-]+/) != null) {
-            _errorMsgSave += "■PSDドキュメントを半角英数で保存する必要があります。\n\n";
+            _errorMsgSave += "■有必要将PSD文档保存为单字节字母表。\n\n";
         }
     }
 
